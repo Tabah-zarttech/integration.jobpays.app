@@ -45,30 +45,6 @@
       }
     },
     {
-      "name": "transfer",
-      "description": "Perform internal fund transfer as an organization.",
-      "externalDocs": {
-        "description": "Read here",
-        "url": "http://integration.jobpays.app"
-      }
-    },
-    {
-      "name": "recieve",
-      "description": "Accepting funds transfer from other bank account.",
-      "externalDocs": {
-        "description": "Find out here",
-        "url": "http://integration.jobpays.app"
-      }
-    },
-    {
-      "name": "balance",
-      "description": "Check account balance.",
-      "externalDocs": {
-        "description": "Check here",
-        "url": "http://integration.jobpays.app"
-      }
-    },
-    {
       "name": "card",
       "description": "Generating a debit card.",
       "externalDocs": {
@@ -254,28 +230,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/balance"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/account/currency": {
-      "get": {
-        "tags": [
-          "account"
-        ],
-        "summary": "account currency",
-        "description": "EUR is an accepted currency",
-        "operationId": "getCurrency",
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/currency"
                 }
               }
             }

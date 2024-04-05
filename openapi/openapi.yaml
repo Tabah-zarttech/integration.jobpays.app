@@ -47,8 +47,6 @@ paths:
     $ref: paths/account_recieve.yaml
   /account/balance:
     $ref: paths/account_balance.yaml
-  /account/currency:
-    $ref: paths/account_currency.yaml
   /card:
     $ref: paths/card.yaml
   /card/freeze:
