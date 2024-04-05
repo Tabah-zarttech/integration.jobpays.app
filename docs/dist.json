@@ -1,0 +1,578 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Integrate with JobPays",
+    "description": "Power your organization with a more secured and user friendly API that support all form of transaction and process within your organization and outside your organization."
+  },
+  "servers": [
+    {
+      "description": "SwaggerHub API Auto Mocking",
+      "url": "https://virtserver.swaggerhub.com/BARIDULE/Jobpays/1.0.0"
+    }
+  ],
+  "security": [
+    {
+      "implicit": [
+        "read",
+        "write"
+      ]
+    }
+  ],
+  "tags": [
+    {
+      "name": "business",
+      "description": "Everything about getting your business on JobPays.",
+      "externalDocs": {
+        "description": "Find out here",
+        "url": "https://integration.jobpays.app"
+      }
+    },
+    {
+      "name": "kyc",
+      "description": "Conduct your business KYC.",
+      "externalDocs": {
+        "description": "Check here",
+        "url": "http://integration.jobpays.app"
+      }
+    },
+    {
+      "name": "account",
+      "description": "Generating EU bank account.",
+      "externalDocs": {
+        "description": "Follow through",
+        "url": "http://integration.jobpays.app"
+      }
+    },
+    {
+      "name": "transfer",
+      "description": "Perform internal fund transfer as an organization.",
+      "externalDocs": {
+        "description": "Read here",
+        "url": "http://integration.jobpays.app"
+      }
+    },
+    {
+      "name": "recieve",
+      "description": "Accepting funds transfer from other bank account.",
+      "externalDocs": {
+        "description": "Find out here",
+        "url": "http://integration.jobpays.app"
+      }
+    },
+    {
+      "name": "balance",
+      "description": "Check account balance.",
+      "externalDocs": {
+        "description": "Check here",
+        "url": "http://integration.jobpays.app"
+      }
+    },
+    {
+      "name": "card",
+      "description": "Generating a debit card.",
+      "externalDocs": {
+        "description": "Follow through",
+        "url": "http://integration.jobpays.app"
+      }
+    },
+    {
+      "name": "freeze",
+      "description": "Freeze debit card.",
+      "externalDocs": {
+        "description": "Read here",
+        "url": "http://integration.jobpays.app"
+      }
+    },
+    {
+      "name": "block",
+      "description": "Blocking of debit card.",
+      "externalDocs": {
+        "description": "Find out here",
+        "url": "http://integration.jobpays.app"
+      }
+    }
+  ],
+  "paths": {
+    "/business": {
+      "post": {
+        "tags": [
+          "createBusiness"
+        ],
+        "summary": "Create a business on JobPays",
+        "description": "Filling the neccessary information needed to create a business account on JobPays.",
+        "security": [],
+        "operationId": "createBusiness",
+        "parameters": [
+          {
+            "name": "businessId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/business"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "createBusiness"
+        ],
+        "summary": "Deletes a business from database",
+        "description": "A business owner can delete a business account from JobPays.",
+        "operationId": "deleteBusiness",
+        "parameters": [
+          {
+            "name": "api_key",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "businessId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid pet value"
+          }
+        }
+      }
+    },
+    "/business/{businessId}/uploadImage": {
+      "post": {
+        "tags": [
+          "business"
+        ],
+        "summary": "uploads an image",
+        "description": "add business logo to business page",
+        "operationId": "uploadFile",
+        "parameters": [
+          {
+            "name": "businessId",
+            "in": "path",
+            "description": "ID of business to update",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "additionalMetadata",
+            "in": "query",
+            "description": "Additional Metadata",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/business"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/kyc": {
+      "get": {
+        "tags": [
+          "kyc"
+        ],
+        "summary": "Get to verify business customer detials",
+        "description": "Map business information with KYC standard",
+        "operationId": "getKYC",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/business"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/account": {
+      "get": {
+        "tags": [
+          "account"
+        ],
+        "summary": "generate EU bank account",
+        "description": "provide bank account for EU users",
+        "operationId": "getBank",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/account"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/transfer": {
+      "get": {
+        "tags": [
+          "account"
+        ],
+        "summary": "Internal fund transfer",
+        "description": "Perform internal fund transfer",
+        "operationId": "fundTransfer",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/transfer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/recieve": {
+      "get": {
+        "tags": [
+          "account"
+        ],
+        "summary": "Recieve funds from banks",
+        "description": "Accepting money transfer from other banks",
+        "operationId": "recieveFund",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/recieve"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/balance": {
+      "get": {
+        "tags": [
+          "account"
+        ],
+        "summary": "veiw account balance",
+        "description": "checking of accounnt balance by business owner",
+        "operationId": "getBalance",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/balance"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/currency": {
+      "get": {
+        "tags": [
+          "account"
+        ],
+        "summary": "account currency",
+        "description": "EUR is an accepted currency",
+        "operationId": "getCurrency",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/currency"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/card": {
+      "get": {
+        "tags": [
+          "card"
+        ],
+        "summary": "Generating debit card.",
+        "description": "Generate a debit card for business owner",
+        "operationId": "getCard",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/card"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/card/freeze": {
+      "get": {
+        "tags": [
+          "card"
+        ],
+        "summary": "Freezing a debit card",
+        "description": "Business owner can freeze a debit card",
+        "operationId": "freezeCard",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/card"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Card/block": {
+      "get": {
+        "tags": [
+          "card"
+        ],
+        "summary": "Blocking a debit card",
+        "description": "Business owner should be able to block a debit card",
+        "operationId": "blockCard",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/card"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "implicit": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "http://example.com/oauth/auth",
+            "scopes": {
+              "write": "allows modifying resources",
+              "read": "allows reading resources"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "business": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 10
+          },
+          "businessId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 198772
+          },
+          "name": {
+            "type": "string",
+            "example": "Doordash"
+          },
+          "type": {
+            "type": "string",
+            "example": "logistic"
+          },
+          "address": {
+            "type": "string",
+            "example": "calvin peters hill crescent"
+          },
+          "contact": {
+            "type": "string",
+            "example": "user@email.com"
+          }
+        }
+      },
+      "account": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 10
+          },
+          "name": {
+            "type": "string",
+            "example": "Doordash"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567890
+          }
+        }
+      },
+      "transfer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 10
+          },
+          "name": {
+            "type": "string",
+            "example": "Doordash"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "float",
+            "example": 17.5
+          }
+        }
+      },
+      "recieve": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 10
+          },
+          "name": {
+            "type": "string",
+            "example": "Doordash"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "float",
+            "example": 17.5
+          }
+        }
+      },
+      "balance": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 10
+          },
+          "name": {
+            "type": "string",
+            "example": "Doordash"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "float",
+            "example": 17.5
+          }
+        }
+      },
+      "currency": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 10
+          },
+          "name": {
+            "type": "string",
+            "example": "Doordash"
+          },
+          "symbol": {
+            "type": "string",
+            "example": "EUR"
+          }
+        }
+      },
+      "card": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 10
+          },
+          "name": {
+            "type": "string",
+            "example": "Doordash"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int64",
+            "example": 123456678
+          },
+          "cvv": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123
+          }
+        }
+      }
+    }
+  }
+}
