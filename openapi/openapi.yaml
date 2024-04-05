@@ -1,122 +1,94 @@
-openapi: 3.1.0
+openapi: 3.0.0
 info:
   version: 1.0.0
-  title: Example API
-  termsOfService: https://example.com/terms/
-  contact:
-    name: Contact our support
-    email: contact@example.com
-    url: http://example.com/contact
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  x-logo:
-    url: 'https://redocly.github.io/openapi-template/logo.png'
-    altText: OpenAPI example logo
-  description: >
-    This is an **example** API to demonstrate features of the OpenAPI
-    specification.
-
-    # Introduction
-
-    This API definition is intended to to be a good starting point for
-    describing your API in [OpenAPI/Swagger
-    format](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md).
-
-    It also demonstrates features of the
-    [create-openapi-repo](https://github.com/Redocly/create-openapi-repo) tool
-    and the [Redoc](https://github.com/Redocly/Redoc) documentation engine. Beyond
-    the standard OpenAPI syntax, we use a few 
-    [vendor extensions](https://github.com/Redocly/Redoc/blob/main/docs/redoc-vendor-extensions.md).
-
-    # OpenAPI Specification
-
-    The goal of The OpenAPI Specification is to define a standard, language-agnostic interface to REST APIs which
-    allows both humans and computers to discover and understand the capabilities
-    of the service without access to source
-    code, documentation, or through network traffic inspection. When properly
-    defined via OpenAPI, a consumer can 
-    understand and interact with the remote service with a minimal amount of
-    implementation logic. Similar to what
-    interfaces have done for lower-level programming, OpenAPI removes the
-    guesswork in calling the service.
-externalDocs:
-  description: "Find out how to create a GitHub repo for your OpenAPI definition."
-  url: 'https://github.com/Redocly/create-openapi-repo'
-tags:
-  - name: Echo
-    description: "Example echo operations."
-  - name: User
-    description: "Example actions on user accounts."
-  - name: Admin
-    description: "Example operations reserved for administrators."
-  - name: Info
-    description: "Example operations for retrieving information."
-  - name: Tag
-    description: "This is a tag description."
-x-tagGroups:
-  - name: General
-    tags:
-      - User
-      - Info
-      - Echo
-  - name: Administration
-    tags:
-      - Admin
+  title: Integrate with JobPays
+  description: >-
+    Power your organization with a more secured and user friendly API that
+    support all form of transaction and process within your organization and
+    outside your organization.
 servers:
-  - url: https://{tenant}/api/v1
-    variables:
-      tenant:
-        default: www
-        description: Your tenant id
-  - url: https://example.com/api/v1
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/BARIDULE/Jobpays/1.0.0
+security:
+  - implicit:
+      - read
+      - write
+tags:
+  - name: business
+    description: Everything about getting your business on JobPays.
+    externalDocs:
+      description: Find out here
+      url: https://integration.jobpays.app
+  - name: kyc
+    description: Conduct your business KYC.
+    externalDocs:
+      description: Check here
+      url: http://integration.jobpays.app
+  - name: account
+    description: Generating EU bank account.
+    externalDocs:
+      description: Follow through
+      url: http://integration.jobpays.app
+  - name: transfer
+    description: Perform internal fund transfer as an organization.
+    externalDocs:
+      description: Read here
+      url: http://integration.jobpays.app
+  - name: recieve
+    description: Accepting funds transfer from other bank account.
+    externalDocs:
+      description: Find out here
+      url: http://integration.jobpays.app
+  - name: balance
+    description: Check account balance.
+    externalDocs:
+      description: Check here
+      url: http://integration.jobpays.app
+  - name: card
+    description: Generating a debit card.
+    externalDocs:
+      description: Follow through
+      url: http://integration.jobpays.app
+  - name: freeze
+    description: Freeze debit card.
+    externalDocs:
+      description: Read here
+      url: http://integration.jobpays.app
+  - name: block
+    description: Blocking of debit card.
+    externalDocs:
+      description: Find out here
+      url: http://integration.jobpays.app
 paths:
-  '/users/{username}':
-    $ref: 'paths/users_{username}.yaml'
-  '/user':
-    $ref: 'paths/user.yaml'
-  '/user/list':
-    $ref: 'paths/user-status.yaml'
-  /pathItem:
-    $ref: paths/pathItem.yaml
-  /pathItemWithExamples:
-    $ref: paths/pathItemWithExamples.yaml
-  '/echo':
-    $ref: 'paths/echo.yaml'
+  /business:
+    $ref: paths/business.yaml
+  /business/{businessId}/uploadImage:
+    $ref: paths/business_{businessId}_uploadImage.yaml
+  /kyc:
+    $ref: paths/kyc.yaml
+  /account:
+    $ref: paths/account.yaml
+  /account/transfer:
+    $ref: paths/account_transfer.yaml
+  /account/recieve:
+    $ref: paths/account_recieve.yaml
+  /account/balance:
+    $ref: paths/account_balance.yaml
+  /account/currency:
+    $ref: paths/account_currency.yaml
+  /card:
+    $ref: paths/card.yaml
+  /card/freeze:
+    $ref: paths/card_freeze.yaml
+  /Card/block:
+    $ref: paths/Card_block.yaml
 components:
   securitySchemes:
-    main_auth:
-      description: "Example description text of the OAuth2 scheme."
+    implicit:
       type: oauth2
       flows:
         implicit:
-          authorizationUrl: http://example.com/api/oauth/dialog
+          authorizationUrl: http://example.com/oauth/auth
           scopes:
-            'read:users': read user info
-            'write:users': modify or remove users
-    api_key:
-      description: "Example description text of the API key scheme."
-      type: apiKey
-      in: header
-      name: api_key
-    basic_auth:
-      type: http
-      scheme: basic
-webhooks:
-  userInfo:
-    post:
-      summary: New user webhook
-      description: "Information about a new user in the system."
-      operationId: userInfo
-      tags:
-        - Info
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: 'components/schemas/User.yaml'
-      responses:
-        '200':
-          description: "Successfully retrieved information about a new user."
-      security:
-        - api_key: []
+            write: allows modifying resources
+            read: allows reading resources

@@ -1,0 +1,12 @@
+type: object
+properties:
+  id:
+    type: integer
+    format: int64
+    example: 10
+  name:
+    type: string
+    example: Doordash
+  symbol:
+    type: string
+    example: EUR

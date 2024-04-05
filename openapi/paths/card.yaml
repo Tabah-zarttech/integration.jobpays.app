@@ -1,0 +1,13 @@
+get:
+  tags:
+    - card
+  summary: Generating debit card.
+  description: Generate a debit card for business owner
+  operationId: getCard
+  responses:
+    '200':
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\card.yaml

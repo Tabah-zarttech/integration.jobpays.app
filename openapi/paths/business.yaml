@@ -1,0 +1,47 @@
+post:
+  tags:
+    - createBusiness
+  summary: Create a business on JobPays
+  description: >-
+    Filling the neccessary information needed to create a business account on
+    JobPays.
+  security: []
+  operationId: createBusiness
+  parameters:
+    - name: businessId
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ..\components\schemas\business.yaml
+    '400':
+      description: Invalid status value
+delete:
+  tags:
+    - createBusiness
+  summary: Deletes a business from database
+  description: A business owner can delete a business account from JobPays.
+  operationId: deleteBusiness
+  parameters:
+    - name: api_key
+      in: header
+      description: ''
+      required: false
+      schema:
+        type: string
+    - name: businessId
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '400':
+      description: Invalid pet value

@@ -1,0 +1,13 @@
+get:
+  tags:
+    - account
+  summary: veiw account balance
+  description: checking of accounnt balance by business owner
+  operationId: getBalance
+  responses:
+    '200':
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\balance.yaml

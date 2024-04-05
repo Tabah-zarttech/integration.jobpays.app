@@ -1,0 +1,22 @@
+type: object
+properties:
+  id:
+    type: integer
+    format: int64
+    example: 10
+  businessId:
+    type: integer
+    format: int64
+    example: 198772
+  name:
+    type: string
+    example: Doordash
+  type:
+    type: string
+    example: logistic
+  address:
+    type: string
+    example: calvin peters hill crescent
+  contact:
+    type: string
+    example: user@email.com

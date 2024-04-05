@@ -1,0 +1,13 @@
+get:
+  tags:
+    - account
+  summary: Recieve funds from banks
+  description: Accepting money transfer from other banks
+  operationId: recieveFund
+  responses:
+    '200':
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\recieve.yaml

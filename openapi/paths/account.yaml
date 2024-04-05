@@ -1,0 +1,13 @@
+get:
+  tags:
+    - account
+  summary: generate EU bank account
+  description: provide bank account for EU users
+  operationId: getBank
+  responses:
+    '200':
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\account.yaml

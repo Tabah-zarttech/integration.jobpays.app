@@ -1,0 +1,14 @@
+get:
+  tags:
+    - kyc
+  summary: Get to verify business customer detials
+  description: Map business information with KYC standard
+  operationId: getKYC
+  responses:
+    '200':
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\business.yaml
+  security: []

@@ -1,0 +1,13 @@
+get:
+  tags:
+    - card
+  summary: Freezing a debit card
+  description: Business owner can freeze a debit card
+  operationId: freezeCard
+  responses:
+    '200':
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\card.yaml

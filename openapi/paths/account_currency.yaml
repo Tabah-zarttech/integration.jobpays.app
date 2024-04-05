@@ -1,0 +1,13 @@
+get:
+  tags:
+    - account
+  summary: account currency
+  description: EUR is an accepted currency
+  operationId: getCurrency
+  responses:
+    '200':
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\currency.yaml
