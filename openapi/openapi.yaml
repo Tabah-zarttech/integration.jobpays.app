@@ -29,41 +29,14 @@ tags:
     externalDocs:
       description: Follow through
       url: http://integration.jobpays.app
-  - name: transfer
-    description: Perform internal fund transfer as an organization.
-    externalDocs:
-      description: Read here
-      url: http://integration.jobpays.app
-  - name: recieve
-    description: Accepting funds transfer from other bank account.
-    externalDocs:
-      description: Find out here
-      url: http://integration.jobpays.app
-  - name: balance
-    description: Check account balance.
-    externalDocs:
-      description: Check here
-      url: http://integration.jobpays.app
   - name: card
     description: Generating a debit card.
     externalDocs:
       description: Follow through
       url: http://integration.jobpays.app
-  - name: freeze
-    description: Freeze debit card.
-    externalDocs:
-      description: Read here
-      url: http://integration.jobpays.app
-  - name: block
-    description: Blocking of debit card.
-    externalDocs:
-      description: Find out here
-      url: http://integration.jobpays.app
 paths:
   /business:
     $ref: paths/business.yaml
-  /business/{businessId}/uploadImage:
-    $ref: paths/business_{businessId}_uploadImage.yaml
   /kyc:
     $ref: paths/kyc.yaml
   /account:

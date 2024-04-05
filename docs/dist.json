@@ -75,29 +75,13 @@
         "description": "Follow through",
         "url": "http://integration.jobpays.app"
       }
-    },
-    {
-      "name": "freeze",
-      "description": "Freeze debit card.",
-      "externalDocs": {
-        "description": "Read here",
-        "url": "http://integration.jobpays.app"
-      }
-    },
-    {
-      "name": "block",
-      "description": "Blocking of debit card.",
-      "externalDocs": {
-        "description": "Find out here",
-        "url": "http://integration.jobpays.app"
-      }
     }
   ],
   "paths": {
     "/business": {
       "post": {
         "tags": [
-          "createBusiness"
+          "business"
         ],
         "summary": "Create a business on JobPays",
         "description": "Filling the neccessary information needed to create a business account on JobPays.",
@@ -134,7 +118,7 @@
       },
       "delete": {
         "tags": [
-          "createBusiness"
+          "business"
         ],
         "summary": "Deletes a business from database",
         "description": "A business owner can delete a business account from JobPays.",
@@ -160,54 +144,12 @@
         ],
         "responses": {
           "400": {
-            "description": "Invalid pet value"
+            "description": "Invalid business value"
           }
         }
       }
     },
-    "/business/{businessId}/uploadImage": {
-      "post": {
-        "tags": [
-          "business"
-        ],
-        "summary": "uploads an image",
-        "description": "add business logo to business page",
-        "operationId": "uploadFile",
-        "parameters": [
-          {
-            "name": "businessId",
-            "in": "path",
-            "description": "ID of business to update",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          },
-          {
-            "name": "additionalMetadata",
-            "in": "query",
-            "description": "Additional Metadata",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/business"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+    
     "/kyc": {
       "get": {
         "tags": [
